@@ -4,7 +4,7 @@ from operator import lt, le, gt, ge
 """
 Convert a tuple of (pair, operator, value) to a lambda given a mapping of
 a label to its value.
-return a lambda
+returns the evaluated lambda
 """
 def evalTupleCond(tuple, mapper):
     actualVal = mapper(tuple[0])
@@ -24,7 +24,7 @@ def evalTupleCond(tuple, mapper):
 
 """
 Parse a string polish notation string expr 
-return a lambda condition
+returns the evaluated expression
 """
 def evalCondExpression(expression, mapper):
     rem = match(r"([a-zA-Z]+) (<|>|<=|>=) ([1-9]\d*(\.\d+)?)", expression)
