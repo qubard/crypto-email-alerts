@@ -20,7 +20,7 @@ The `alerts.json` file can be used to configure the conditions of when to alert 
 }
 ```
 
-will alert `example@example.com` when `XRPUSDT` goes below 0.5 and `foo@bar.com` when the price of `BTCUSDT` goes is greater than or equal to 1000.
+will alert `example@example.com` when the value of `XRPUSDT` goes below 0.5 and `foo@bar.com` when the value of `BTCUSDT` is greater than or equal to 1000.
 
 # Installation
 
