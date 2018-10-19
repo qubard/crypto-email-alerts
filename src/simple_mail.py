@@ -11,6 +11,7 @@ class SimpleEmailMessage:
 
     def setSubject(self, subject):
         self.subject = subject
+        return self
 
     """
     Send an e-mail with the message
