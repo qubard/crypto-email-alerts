@@ -3,6 +3,8 @@ alert me if im losing digital "money" :'(
 
 # Configuration
 
+Modify `config.py` with the appropriate `SMTP` mail configuration.
+
 The `alerts.json` file can be used to configure the conditions of when to alert the destination e-mail address(es) of the value of a pairing having satisfied the new condition.
 
 ```
