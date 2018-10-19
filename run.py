@@ -21,6 +21,9 @@ def sendMail(alert):
     return False
 
 def job():
+    global alerts
+    global api
+    
     # Query the API
     api.fetch_ticker_pairs()
 
@@ -30,7 +33,8 @@ def job():
     # re-write the modified alerts to disk
     if len(new_alerts) != len(alerts):
         alert_loader.write(new_alerts)
-
+        alerts = new_alerts   
+        
 # Initialize the API
 api = binance.API()
 

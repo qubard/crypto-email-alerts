@@ -28,10 +28,12 @@ class SimpleEmailMessage:
         msg['From'] = self.src
         msg['To'] = self.dst
 
-        s = smtplib.SMTP_SSL(config.email_smtp, 465)
-        s.login(config.email_user, config.email_pass)
-        s.send_message(msg)
-
-        s.quit()
+        try:
+            s = smtplib.SMTP_SSL(config.email_smtp, 465)
+            s.login(config.email_user, config.email_pass)
+            s.send_message(msg)
+            s.quit()
+        except:
+            return False
 
         return True
