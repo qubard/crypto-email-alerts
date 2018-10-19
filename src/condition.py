@@ -6,9 +6,9 @@ Convert a tuple of (pair, operator, value) to a lambda given a mapping of
 a label to its value.
 returns the evaluated lambda
 """
-def evalTupleCond(tuple, mapper):
+def evalTuple(tuple, mapper):
     actualVal = mapper(tuple[0])
-
+    
     if not (type(actualVal) == float or type(actualVal) == int):
         return None
 
@@ -26,9 +26,9 @@ def evalTupleCond(tuple, mapper):
 Parse a string polish notation string expr
 returns the evaluated expression
 """
-def evalCondExpression(expression, mapper):
+def eval(expression, mapper):
     rem = match(r"([a-zA-Z]+) (<|>|<=|>=) ([1-9]\d*(\.\d+)?)", expression)
     if rem is not None:
         groups = rem.groups()
-        return evalTupleCond(groups, mapper)
+        return evalTuple(groups, mapper)
     return None

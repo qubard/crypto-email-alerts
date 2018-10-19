@@ -42,4 +42,4 @@ class API:
     Gets the last price of a pairing
     """
     def price(self, pair):
-        return self.pairs[pair]['lastPrice']
+        return float(self.pairs[pair]['lastPrice'])

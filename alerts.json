@@ -1,0 +1,12 @@
+{
+    "alerts": [
+        {
+            "to": "example@example.com",
+            "condition": "XRPUSDT < 0.5"
+        },
+        {
+            "to": "foo@bar.com",
+            "condition": "BTCUSDT >= 1000"
+        }
+    ]
+}
