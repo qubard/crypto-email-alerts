@@ -35,3 +35,8 @@ pip install -r requirements.txt
 # Usage
 
 After installation, run `python run.py` (requires python3 and above)
+
+# TODO
+
+- support for `conditions` instead of `condition` in `alerts.json`
+- removing former condition once it is satisfied
