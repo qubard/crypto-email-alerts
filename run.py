@@ -25,7 +25,7 @@ def job():
     api.fetch_ticker_pairs()
 
     # Send out e-mails for satisfied conditions
-    new_alerts = [alert for alert in alerts if sendMail(alert)]
+    new_alerts = [alert for alert in alerts if not sendMail(alert)]
 
     # re-write the modified alerts to disk
     if len(new_alerts) != len(alerts):
