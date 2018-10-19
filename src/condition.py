@@ -27,7 +27,7 @@ Parse a string polish notation string expr
 returns the evaluated expression
 """
 def eval(expression, mapper):
-    rem = match(r"([a-zA-Z]+) (<|>|<=|>=) ([1-9]\d*(\.\d+)?)", expression)
+    rem = match(r"([a-zA-Z]+) (<|>|<=|>=) ([0-9]\d*(\.\d+)?)", expression)
     if rem is not None:
         groups = rem.groups()
         return evalTuple(groups, mapper)
