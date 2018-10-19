@@ -31,3 +31,7 @@ virtualenv env
 env/Scripts/activate
 pip install -r requirements.txt
 ```
+
+# Usage
+
+After installation, run `python run.py` (requires python3 and above)
