@@ -15,12 +15,10 @@ def evalTuple(tuple, mapper):
     operator = tuple[1]
     val = float(tuple[2])
 
-    operators = { '<' : lt(actualVal, val), \
+    return { '<' : lt(actualVal, val), \
                   '>' : gt(actualVal, val), \
                   '<=' : le(actualVal, val), \
-                  '>=' : ge(actualVal, val) }
-
-    return operators[operator]
+                  '>=' : ge(actualVal, val) }[operator]
 
 """
 Parse a string polish notation string expr
