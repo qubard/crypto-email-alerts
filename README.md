@@ -30,9 +30,11 @@ Using `virtualenv`
 
 ```
 virtualenv env
-env/Scripts/activate
+. env/Scripts/activate
 pip install -r requirements.txt
 ```
+
+**Note:** on Unix run `. env/bin/activate` to activate the virtual environment.
 
 # Usage
 
