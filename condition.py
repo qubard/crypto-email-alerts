@@ -8,22 +8,22 @@ returns the evaluated lambda
 """
 def evalTupleCond(tuple, mapper):
     actualVal = mapper(tuple[0])
-    
+
     if not (type(actualVal) == float or type(actualVal) == int):
         return None
-    
+
     operator = tuple[1]
     val = float(tuple[2])
-    
+
     operators = { '<' : lt(actualVal, val), \
                   '>' : gt(actualVal, val), \
                   '<=' : le(actualVal, val), \
                   '>=' : ge(actualVal, val) }
-                  
+
     return operators[operator]
 
 """
-Parse a string polish notation string expr 
+Parse a string polish notation string expr
 returns the evaluated expression
 """
 def evalCondExpression(expression, mapper):
@@ -32,8 +32,3 @@ def evalCondExpression(expression, mapper):
         groups = rem.groups()
         return evalTupleCond(groups, mapper)
     return None
-   
-   
-print(evalCondExpression("A < 6000.0", lambda x : 3000.0))
-    
-# { condition: "A < 6000.0", destination: "bla@gmail.com" }
