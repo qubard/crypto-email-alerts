@@ -6,34 +6,55 @@ from src import alert_loader, condition, binance, simple_mail
 import schedule
 import time
 
+def getSatisfiedConditions(conditions):
+    return list(filter(lambda cond: condition.eval(cond, lambda pair: api.price(pair)), conditions))
+
+# Set difference seems unnecessary here
+def getUnsatisfiedConditions(conditions):
+    return list(filter(lambda cond: not condition.eval(cond, lambda pair: api.price(pair)), conditions))
+    
+def validAlert(alert):
+    return alert['to'] and alert['conditions']
+    
+"""
+Send an e-mail for alert's valid conditions.
+returns true if mail was attempted to be sent
+"""
 def sendMail(alert):
-    to = alert['to']
-    cond = alert['condition']
-    if to and condition:
-        satisfied = condition.eval(cond, lambda pair: api.price(pair))
-        if satisfied:
+    if validAlert(alert):
+        # Only consider conditions which are satisfied
+        to = alert['to']
+        conditions = getSatisfiedConditions(alert['conditions'])
+        for cond in conditions:
             time = datetime.now()
             uuid = str(uuid1())[:5] # Generate a (hopefully) unique uuid
             status = simple_mail.SimpleEmailMessage(to). \
                 setSubject("%s (#%s)" % (cond, uuid)). \
                 sendMessage("Your condition happened!\n %s" % time)
-            return status
+        return len(conditions) > 0
     return False
 
 def job():
     global alerts
     global api
     
+    modified = False
+    
     # Query the API
     api.fetch_ticker_pairs()
 
-    # Send out e-mails for satisfied conditions
-    new_alerts = [alert for alert in alerts if not sendMail(alert)]
-
-    # re-write the modified alerts to disk
-    if len(new_alerts) != len(alerts):
-        alert_loader.write(new_alerts)
-        alerts = new_alerts   
+    # Send out e-mails for satisfied conditions and keep unsatisfied conditions in the list
+    for alert in alerts:
+        if sendMail(alert):
+            unsatisfiedConditions = getUnsatisfiedConditions(alert['conditions'])
+            alert['conditions'] = unsatisfiedConditions
+            modified = True
+    
+    if modified:
+        # Get rid of any alerts with no conditions
+        alerts = [alert for alert in alerts if len(alert['conditions']) > 0]
+        # Re-write the modified alerts to disk
+        alert_loader.write(alerts)
         
 # Initialize the API
 api = binance.API()
