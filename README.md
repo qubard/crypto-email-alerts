@@ -29,16 +29,14 @@ will alert `example@example.com` when the value of `XRPUSDT` goes below 0.5 and 
 Using `virtualenv`
 
 ```
-virtualenv env
-. env/Scripts/activate
+virtualenv -p python3 env
+. env/bin/activate
 pip install -r requirements.txt
 ```
 
-**Note:** on Unix run `. env/bin/activate` to activate the virtual environment.
-
 # Usage
 
-After installation, run `python run.py` (requires python3 and above)
+After installation, in the virtual environment run `python run.py` (requires python3 and above)
 
 # TODO
 
