@@ -7,7 +7,7 @@ Modify `config.py` with the appropriate `SMTP` mail configuration.
 
 The `alerts.json` file can be used to configure the conditions of when to alert the destination e-mail address(es) of the value of a pairing having satisfied the new condition(s).
 
-A separate e-mail is sent for each condition.
+A separate e-mail is sent for each condition. Once an e-mail alert is sent, the condition is removed from the `conditions` array and `alerts.json` is updated.
 
 ```
 {
