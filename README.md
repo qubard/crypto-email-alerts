@@ -1,5 +1,11 @@
 # email-alert-me
-alert me if im losing digital "money" :'(
+
+![License](https://img.shields.io/github/license/mashape/apistatus.svg)
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/Django.svg)
+
+email-alert-me is a command-line interface that alerts you regarding the price change of cryptocurrency.
+
+Dependencies include [schedule](https://github.com/dbader/schedule) to do job-scheduling and [requests](http://docs.python-requests.org/en/master/) to handle API requests to Binance.
 
 # Configuration
 
