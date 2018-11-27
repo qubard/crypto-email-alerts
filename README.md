@@ -9,7 +9,7 @@ Dependencies include [schedule](https://github.com/dbader/schedule) to do job-sc
 
 # Configuration
 
-Modify `config.py` with the appropriate `SMTP` mail configuration.
+Modify `config.py` with the appropriate `SMTP` mail configuration (SSL is enabled by default, so your configuration must target port 465).
 
 The `alerts.json` file can be used to configure the conditions of when to alert the destination e-mail address(es) of the value of a pairing having satisfied the new condition(s).
 
