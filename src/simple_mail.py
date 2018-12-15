@@ -3,6 +3,9 @@ import config
 
 from email.message import EmailMessage
 
+class BadEmailConfiguration(Exception):
+    pass
+
 class SimpleEmailMessage:
 
     def __init__(self, dst):
@@ -34,6 +37,6 @@ class SimpleEmailMessage:
             s.send_message(msg)
             s.quit()
         except:
-            return False
+            raise BadEmailConfiguration("Failed to send e-mail! Check your email configuration")
 
         return True

@@ -31,6 +31,7 @@ def sendMail(alert):
             status = simple_mail.SimpleEmailMessage(to). \
                 setSubject("%s (#%s)" % (cond, uuid)). \
                 sendMessage("Your condition happened!\n %s" % time)
+                
         return len(conditions) > 0
     return False
 
