@@ -55,7 +55,7 @@ After installation, in the virtual environment run `python run.py`.
 Using `pm2` deployment is as simple as
 
 ```
-pm2 start run.py --interpreter=evn/bin/python
+pm2 start run.py --interpreter=env/bin/python
 ```
 
 The interpreter flag is **necessary** since it forces the Python installation used to be the associated with the virtual environment created during the installation step.
